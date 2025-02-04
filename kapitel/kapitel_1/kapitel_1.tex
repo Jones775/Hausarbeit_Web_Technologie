@@ -1,29 +1,9 @@
 \newpage
 \section{Theoretische Grundlagen von Edge Cloud Systemen} \label{infos}
-Siehe auch Wissenschaftliches Arbeiten~\footcite[\vglf][S. 1]{Balzert.2008}. %ohne textcommands
-Damit sollten alle wichtigen Informationen abgedeckt sein ;-)~\footcite[\vglf][\pagef 1]{Balzert.2008} %mit textcommands
-Hier gibt es noch ein Beispiel für ein direktes Zitat\footcite[][\pagef 1]{Balzert.2008} %mit textcommands
 
 
 
 
-
-\subsection{Anfertigungsphase}
-Die Anmeldung ist mittlerweile jeden Mittwoch möglich. \ac{ARP}: Adress Resolution Protocol
-\ac{DDOS}: Distributed Denial of Service
-\ac{DORA}: Digital Operations Resilience Act
-\ac{IP}: Internet Protocol
-\ac{IT}: Informationstechnologie
-\ac{SDN} : Software Defined Networking
-\ac{TCP}: Transmission Control Protocol
-\ac{UDP}: User Datagram Protocol
-
-\begin{figure}[H]
-\caption{FOM-Vorgaben zur Thesis im Online-Campus}
-\includegraphics[width=0.9\textwidth]{campusDownload}
-\\
-\cite[Quelle: Vgl.][]{FOM}
-\end{figure}
 
 
 
@@ -32,6 +12,61 @@ Die Anmeldung ist mittlerweile jeden Mittwoch möglich. \ac{ARP}: Adress Resolut
 \subsection{Begriffserklärungen}
 
 Hier kommt das Kapitel hin todo
+\\
+\cite[Quelle: Vgl.][]{FOM}
+
+
+\subsubsection{Edge Cloud Systeme}
+
+In den letzten Jahren haben Cloud-Systeme immer mehr an Popularität gewonnen. Firmen, die ihre IT-Systeme on-premise betrieben haben, also auf angemieteten Servern, haben teilweise ihre Aktivität in die Cloud verlegt. 
+Die Cloud ist ein entferntes großes Rechenzentrum, das üblicherweise von einem großen Cloud-Betreiber betrieben wird. Die größten Cloudbetreiber im Jahr 2024 todo bitte Quelle finden, waren Amazon Web Services, 
+Microsoft Azure und Google. Die Cloud bietet Unternehmen einige Vorteile, beispielsweise lässt sie sich einfach konfigurieren und den Bedürfnissen des Unternehmens anpassen. 
+Die benötigte Rechenkapazität lässt sich außerdem einfach skalieren. Allerdings bringt die Cloud auch Nachteile mit sich. Das Rechenzentrum der Cloud ist meistens räumlich weit entfernt vom Unternehmen, das Cloud-Dienste in Anspruch nimmt. 
+Dies resultiert in einer hohen Latenz, also Verzögerung bei der Übertragung des Datenverkehrs zwischen Endbenutzer und Cloud. Für den Großteil der Dienste ist diese Latenz zu vernachlässigen. 
+Mit dem Aufkommen von modernen Diensten, die mit Real-Time-Verarbeitung arbeiten, ist Latenz allerdings zu einem Problem geworden. Beispiele für solche Dienste sind beispielsweise Fahrzeug-zu-Fahrzeug-Kommunikation, 
+die unter anderem im teilautonomen Fahren eingesetzt wird, aber auch ortsabhängige Dienste. Jene Real-Time-Dienste benötigen eine möglichst niedrige Latenz, um ordnungsgemäß zu funktionieren. 
+Um die Vorteile einer Cloud nutzen zu können, ohne dabei die Latenz in die Höhe zu treiben, kam das Konzept der Edge Cloud Systeme auf. Edge Cloud Systeme betreiben Edge Computing, also Rechenarbeit am Netzwerkrand. 
+In diesem Konzept findet die Rechenarbeit nicht in der Cloud statt, allerdings auch nicht im Netzwerk des Unternehmens. Diese wird stattdessen in eine sogenannte Edge-Cloud verlagert. 
+Dies ist ein kleineres Rechenzentrum, dass sich räumlich näher an der Datenquelle befindet. Die räumliche Nähe reduziert die Latenz, da Datenpakete nur noch einen Bruchteil der Strecke überwinden müssen. 
+Dies ermöglicht es, auch Latenz-sensitive Dienste in einer Cloud-Umgebung zu betreiben, um alle Vorteile dieser zu nutzen.
+
+
+\subsubsection{Konzepte von Software Defined Networking}
+
+
+Mit dem Aufkommen neuartiger Services verändern sich auch die Anforderungen an Netzwerke. Netzwerke müssen beispielsweise in der Lage sein, flexibel auf verschiedene Situationen zu reagieren. 
+Besonders Skalierbarkeit ist eine wichtige Eigenschaft moderner Netzwerke. Um dies zu ermöglichen, setzt man zunehmen auf sogenannte Software-Defined Networking-Ansätze statt klassischen Netzwerken. 
+Klassische Netzwerke sind statisch. Dies bedeutet, dass die Netzwerktopologie, also der Aufbau des Netzwerkes fest ist. Soll diese Topologie verändert werden, so bedeutet dies einen hohen manuellen Konfigurationsaufwand. 
+Auch sind in einem klassischen Netzwerk die sogenannten Flussregeln dezentral definiert. Eine Flussregel ist eine Regel, an welche Geräte ein Netzwerkgerät bestimmte Datenpakete weiterleiten soll. 
+Dezentral definiert bedeutet, dass jedes Netzwerkgerät seine Flussregeln lokal gespeichert hat. Soll eine Flussregel also geändert werden, so muss zum einen auf das Netzwerkgerät zugegriffen werden, 
+zum anderen müssen die Auswirkungen, die das Ändern der Regel mit sich bringt, betrachtet werden. SDN-Systeme verfolgen einen anderen Ansatz, diese trennen die Datenebene von der Kontrollebene. 
+Die Datenebene bezeichnet die Komponente eines Netzwerkes, die die eigentliche Aufgabe des Netzwerkes verrichten. Teil der Datenebene sind Netzwerkgeräte, die Datenpakete nach bestimmten Regeln weiterleiten. 
+Das können Router, Switche oder auch andere Komponenten des Netzwerkes sein. Die Kontrollebene auf der anderen Seite hat die Aufgabe, das Netzwerk kontinuierlich zu überwachen. 
+Auf ihr befinden sich die sogenannten SDN-Controller, das sind Softwareprogramme, die die Aufgabe haben, Änderungen im Netzwerk zu erkennen und dieses dynamisch umzukonfigurieren, um dieser Änderung gerecht zu werden. 
+Ein SDN-Controller könnte beispielsweise eine erhöhte Anzahl an Client-Anfragen registrieren und zusätzliche virtuelle Server hochfahren, um diese Anfragen zu bearbeiten. 
+Die statische Netzwerktopologie der klassischen Netzwerke wird so durch ein sich dynamisch anpassendes Netzwerk ersetzt. (1.Quelle)todo Um die Potenziale von Software-Defined Networking in Gänze zu nutzen, 
+wird es häufig mit Virtualisierung kombiniert. Virtualisierung ermöglicht Skalierbarkeit des Netzwerkes, da es so möglich ist, eine gewünschte Anzahl an Netzwerkgeräten virtuell zur Verfügung zu stellen. 
+Werden diese virtuellen Instanzen nicht mehr benötigt, so kann man sie flexibel deaktivieren. Zur Virtualisierung von Netzwerkgeräten wie Switchen werden häufig Softwareprogramme wie beispielsweise OpenvSwitch eingesetzt (Ende 1. Quelle)todo. 
+Um die dezentralen Flussregeln der Netzwerkgeräte durch ein zentrales Programm wie den SDN-Controller zu steuern, benutzen die Geräte ein Protokoll wie OpenFlow, 
+das eine Kommunikation zwischen Netzwerkgeräten und SDN-Controllern und damit die dynamische Umkonfiguration des Netzes ermöglicht. SDN-Controller können so als Betriebssystem des Netzwerkes fungieren. 
+Ähnlich wie ein Betriebssystem die Hoheit über Speicher und Prozessor besitzt und festlegt, welche Programme die Hardware nutzen dürfen, so besitzt der Controller die Hoheit über das Netzwerk und legt fest, 
+wie Datenflüsse innerhalb des Netzwerkes weitergeleitet werden. Software-Defined Network-Systeme bieten einige Vorteile gegenüber klassischen Netzwerken. Dazu zählt neben der bereits erwähnten Skalierbarkeit auch, 
+dass sie in der Lage sind, Strategien zur Lastverteilung umzusetzen. Zum einen können sie sich bei einer insgesamt erhöhten Datenlast anpassen, zum anderen reagieren sie flexibel, 
+wenn einzelne Teile innerhalb des Netzwerkes überlastet sind und verteilen die Datenströme gleichmäßig innerhalb des Netzwerkes. Dies wird durch eine allgemein bessere Übersicht über das Netzwerk ermöglicht. 
+Software-Defined Networking ermöglicht es also Netzwerke so flexibel anzubieten, wie Virtualisierung dies mit Instanzen von Betriebssystemen ermöglicht.
+
+
+
+
+
+Die müssen hier solange stehen bis sie verwendet werden damit man das Abkürzungsverzeichnis testen kann
+\ac{DDOS}: Distributed Denial of Service
+\ac{DORA}: Digital Operations Resilience Act
+\ac{IP}: Internet Protocol
+\ac{IT}: Informationstechnologie
+\ac{SDN} : Software Defined Networking
+\ac{TCP}: Transmission Control Protocol
+\ac{UDP}: User Datagram Protocol
 
 
 \subsection{Probleme der Resilienz in Edge Cloud Systemen}
