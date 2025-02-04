@@ -1,7 +1,7 @@
 \newpage
 \section{Resiliente Edge Cloud Systeme in der Praxis} \label{latexDetails}
 
-\subsection{3-Schichten-Architektur}
+\subsection{3 Schichten Architektur}
 
 Um Resilienz in Edge Cloud Systemen zu implementieren sind Resiliente Edge Cloud Systeme nach einer 3-Schichten Architektur aufgebaut. Dieses ist am 2-Schichten-Modell eines Software-Defined-Networking Systems angelehnt, 
 es wird allerdings um eine zusätzliche Schicht ergänzt. Die unterste Ebene ist die Datenebene. Wie auch in klassischen SDN-Systemen befinden sich auf der Datenebene die Netzwerkgeräte, die den Datenverkehr weiterleiten, 
@@ -86,7 +86,7 @@ Dem Controller mit der niedrigsten Zahl weißt er den ersten Platz in der Reihen
 bis jeder SDN-Controller eine eindeutige Nummerierung besitzt. Außerdem wird die Gesamtzahl der Controller im Netzwerk abgespeichert. Der Controller mit der höchsten Nummerierung wird zum Master. 
 Alternativ können die verschiedenen SDN-Controller die Arbeitslast auch so aufteilen, dass kein zentraler Master notwendig ist, um Nachrichten zu verarbeiten. In diesem Konzept hat jeder Controller die Rolle Equal. 
 So ist allerdings ein verteilter Entscheidungsalgorithmus notwendig, der bestimmt, welcher Controller eine eingehende Nachricht verarbeiten soll. In diesem Algorithmus prüft jeder Controller, ob folgende Bedingung zutrifft: 
-dpid mod(num_server) == order. Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
+dpid mod(numbitte unterstrich ergänzenserver) == order. Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
 Num_server ist die Gesamtanzahl aller SDN-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
 Die Modulo Operation teilt also die Menge der Switch auf die Gesamtzahl der Server auf. Ein Controller ist damit immer für die Nachrichten zuständig, die von einem Switch einer bestimmten Gruppe kommen. 
 Jeder Controller vergleicht das Ergebnis der Operation mit seiner Nummerierung. Diese Bedingung wird also immer nur bei einem Controller gleichzeitig wahr. Dieser Controller verarbeitet dann die Nachricht. 
