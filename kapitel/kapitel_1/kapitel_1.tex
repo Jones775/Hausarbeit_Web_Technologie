@@ -33,13 +33,13 @@ Dies ermöglicht es, auch Latenz-sensitive Dienste in einer Cloud-Umgebung zu be
 
 \subsubsection{Konzepte von Software Defined Networking}
 
-
+todo
 Mit dem Aufkommen neuartiger Services verändern sich auch die Anforderungen an Netzwerke. Netzwerke müssen beispielsweise in der Lage sein, flexibel auf verschiedene Situationen zu reagieren. 
-Besonders Skalierbarkeit ist eine wichtige Eigenschaft moderner Netzwerke. Um dies zu ermöglichen, setzt man zunehmen auf sogenannte Software-Defined Networking-Ansätze statt klassischen Netzwerken. 
+Besonders Skalierbarkeit ist eine wichtige Eigenschaft moderner Netzwerke. Um dies zu ermöglichen, setzt man zunehmend auf sogenannte \ac{SDN}-Ansätze statt klassischen Netzwerken. 
 Klassische Netzwerke sind statisch. Dies bedeutet, dass die Netzwerktopologie, also der Aufbau des Netzwerkes fest ist. Soll diese Topologie verändert werden, so bedeutet dies einen hohen manuellen Konfigurationsaufwand. 
 Auch sind in einem klassischen Netzwerk die sogenannten Flussregeln dezentral definiert. Eine Flussregel ist eine Regel, an welche Geräte ein Netzwerkgerät bestimmte Datenpakete weiterleiten soll. 
 Dezentral definiert bedeutet, dass jedes Netzwerkgerät seine Flussregeln lokal gespeichert hat. Soll eine Flussregel also geändert werden, so muss zum einen auf das Netzwerkgerät zugegriffen werden, 
-zum anderen müssen die Auswirkungen, die das Ändern der Regel mit sich bringt, betrachtet werden. SDN-Systeme verfolgen einen anderen Ansatz, diese trennen die Datenebene von der Kontrollebene. 
+zum anderen müssen die Auswirkungen, die das Ändern der Regel mit sich bringt, betrachtet werden. \ac{SDN}-Systeme verfolgen einen anderen Ansatz, diese trennen die Datenebene von der Kontrollebene. 
 Die Datenebene bezeichnet die Komponente eines Netzwerkes, die die eigentliche Aufgabe des Netzwerkes verrichten. Teil der Datenebene sind Netzwerkgeräte, die Datenpakete nach bestimmten Regeln weiterleiten. 
 Das können Router, Switche oder auch andere Komponenten des Netzwerkes sein. Die Kontrollebene auf der anderen Seite hat die Aufgabe, das Netzwerk kontinuierlich zu überwachen. 
 Auf ihr befinden sich die sogenannten SDN-Controller, das sind Softwareprogramme, die die Aufgabe haben, Änderungen im Netzwerk zu erkennen und dieses dynamisch umzukonfigurieren, um dieser Änderung gerecht zu werden. 
@@ -64,16 +64,45 @@ Die müssen hier solange stehen bis sie verwendet werden damit man das Abkürzun
 \ac{DORA}: Digital Operations Resilience Act
 \ac{IP}: Internet Protocol
 \ac{IT}: Informationstechnologie
-\ac{SDN} : Software Defined Networking
+
 \ac{TCP}: Transmission Control Protocol
 \ac{UDP}: User Datagram Protocol
 
 
 \subsection{Probleme der Resilienz in Edge Cloud Systemen}
 
-Hier kommt das Kapitel hin todo
+todo
 
+Die Resilienz von IT-Systemen ist ein immer wichtiger werdendes Thema. Das zeigen unter anderem auch Gesetze wie der Digital Operations Resilience Act, kurz DORA, der von der Europäischen Union erlassen wurde, 
+um Resilienz in Unternehmen zu verbessern. Im Grund bedeutet Resilienz die Widerstandsfähigkeit von IT-Systemen gegen anormale Zustände (todo bitte Quelle finden). 
+Diese Resilienz soll auch in Edge Cloud Systemen umgesetzt werden, denn da die Wichtigkeit von Edge Cloud Systemen immer weiterwächst, steigt auch der Bedarf an resilienten Lösungen. 
 
+Edge Cloud Systeme sind komplexe Systeme, was dazu führt, dass es viele Probleme für die Umsetzung einer resilienten Lösung gibt. Davon sollen allerdings 4 betrachtet werden.
+Zum einen besteht das Problem von Kommunikationsabbrüchen zwischen Switchen und ihren SDN-Controllern. Wie bereits beschrieben, steuert ein SDN-Controller die ihm zugewiesenen Netzwerkgeräte, 
+überwacht diese und aktualisiert ihre Flussregeln. Dazu müssen Sie eine Netzwerkverbindung aufbauen. Führt ein nicht erwartetes Ereignis zu dem Ausfall der Netzwerkverbindung, 
+so muss eine resiliente Lösung den Betrieb auch weiterhin zumindest für eine bestimmte Zeit lange weiterführen. Eine Lösung, in der keine Resilienz-steigernden Maßnahmen eingebaut wurden, 
+könnte bei Abbruch der Verbindung den Betrieb nicht mehr fortsetzen. Da die SDN-Controller keine Kontrolle mehr über die Netzwerkgeräte besitzen, kann das Netzwerk nicht mehr dynamisch umkonfiguriert werden.
+
+Ein weiteres Problem ist die Überlastung eines Servers durch zu viele Client-Anfragen. Besonders bei schwankenden Nutzungsraten, muss eine resiliente Lösung fähig sein, mit Überlastung umzugehen. 
+Wird beispielsweise eine erhöhte Anzahl an Anfragen auf einen bestimmten Service registriert, so muss die Last automatisch auf verschiedene Server aufgeteilt werden, die den gleichen Service anbieten. 
+Dies erhöht die Resilienz gegenüber einer großen Menge an Anfragen, die durch DDOS-Angriffe, aber auch durch legitime Nutzung zustande kommen können. 
+Eine Lösung ohne solche Maßnahmen würde alle Anfragen an einen einzelnen Server weiterleiten, der aufgrund der Anfragen überlastet wäre. Dies resultiert in einer hohen Wartezeit. 
+Diese hohe Wartezeit allerdings wäre ein Widerspruch gegen die Ziele von Edge Cloud Systemen, die eigentlich die Reduzierung von Latenz beinhalten. 
+Eine höhere Wartezeit durch Überlastung eines Servers ist daher nicht tolerierbar.
+
+Zusätzlich zu Servern können auch einzelne Netzwerkverbindungen überlastet werden. Im Prinzip führt dies zu den gleichen Folgen wie bei einer Überlastung eines Servers. 
+Wird in einer nicht-resilienten Lösung ein Algorithmus verwendet, der alle Datenpakete zum selben Ziel auch denselben Weg durch das Netzwerk schickt, so führt dies bei einer hohen Anfragendichte dazu, 
+dass eine bestimmte Verbindung schnell überlastet ist. Zur gleichen Zeit sind allerdings Alternativrouten kaum genutzt und wären zwar in der Theorie länger, 
+in der Praxis durch den Stau auf der Hauptleitung allerdings schneller. Ein resilientes Design muss dies berücksichtigen und den Datenverkehr bei Auslastung einer Verbindung im Netzwerk verteilen. 
+Dazu kann das System durch seinen SDN-basierten Aufbau dynamisch die Flussregeln der Netzwerkgeräte anpassen. Zu der Überlastung einzelner Leitung kommt noch, dass innerhalb einer Leitung TCP und UDP-Datenpakete konkurrieren. 
+UDP-Datenverkehr tendiert dazu, einen Großteil einer Verbindung in Anspruch zu nehmen. Bei normaler Auslastung stellt dies noch kein Problem dar, ist die Leitung allerdings überlastet, so wird TCP-Datenverkehr benachteiligt. 
+Das resiliente System muss also durch die Verteilung des Datenverkehrs im Netzwerk dafür sorgen, dass TCP-Datenverkehr nicht benachteiligt wird.
+
+Ein weiteres Problem ist die Orchestrierung der SDN-Controller. Eine redundante Menge an SDN-Controllern bietet an sich zwar schon Resilienz, bringt allerdings auch Probleme mit sich. 
+Diese redundanten SDN-Controller müssen nämlich auch koordiniert werden. Ziel dabei ist es, dass jedes Netzwerkgerät einen Controller besitzt, der diesen kontrolliert, 
+auf der anderen Seite dürfen allerdings nicht gleichzeitig mehrere Controller für ein Netzwerkgerät zuständig sein. Ein Netzwerkgerät ohne Controller wäre kein funktionierendes Teil im SDN-Netzwerk, 
+denn es gäbe keine Möglichkeiten, die Flussregeln dieses Netzwerkgeräts zu ändern. Verarbeiten allerdings mehrere Controller die Nachrichten eines Netzwerkgeräts, so führt dies auch zu Problemen, 
+da diese das Gerät mit widersprüchlichen Befehlen versorgen könnten.
 
 
 
