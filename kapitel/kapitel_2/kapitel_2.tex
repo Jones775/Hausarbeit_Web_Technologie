@@ -86,9 +86,12 @@ Jeder \ac{SDN}-Controller des Netzwerkes schickt eine zufällig gewählte Ganzza
 Dem Controller mit der niedrigsten Zahl weißt er den ersten Platz in der Reihenfolge, also Platz 0 zu, dem mit der zweitniedrigsten Zahl den zweiten Platz. Dies wird für jeden \ac{SDN}-Controller durchgeführt, 
 bis jeder \ac{SDN}-Controller eine eindeutige Nummerierung besitzt. Außerdem wird die Gesamtzahl der Controller im Netzwerk abgespeichert. Der Controller mit der höchsten Nummerierung wird zum Master. 
 Alternativ können die verschiedenen \ac{SDN}-Controller die Arbeitslast auch so aufteilen, dass kein zentraler Master notwendig ist, um Nachrichten zu verarbeiten. In diesem Konzept hat jeder Controller die Rolle Equal. 
-So ist allerdings ein verteilter Entscheidungsalgorithmus notwendig, der bestimmt, welcher Controller eine eingehende Nachricht verarbeiten soll. In diesem Algorithmus prüft jeder Controller, ob folgende Bedingung zutrifft: 
-dpid modbitte klammern ergänzen todonumbitte unterstrich ergänzenserver == order. Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
-Numbitte unterstrich ergänzen todoserver ist die Gesamtanzahl aller \ac{SDN}-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
+So ist allerdings ein verteilter Entscheidungsalgorithmus notwendig, der bestimmt, welcher Controller eine eingehende Nachricht verarbeiten soll. In diesem Algorithmus prüft jeder Controller, ob folgende Bedingung zutrifft:
+\newline 
+dpid mod(num\_server) == order. 
+\newline
+Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
+Num\_server ist die Gesamtanzahl aller \ac{SDN}-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
 Die Modulo Operation teilt also die Menge der Switche auf die Gesamtzahl der \ac{SDN}-Controller auf. Ein Controller ist damit immer für die Nachrichten zuständig, die von einem Switch einer bestimmten Gruppe kommen. 
 Jeder Controller vergleicht das Ergebnis der Operation mit seiner Nummerierung. Diese Bedingung wird also immer nur bei einem Controller gleichzeitig wahr. Dieser Controller verarbeitet dann die Nachricht. 
 Trotzdem ist auch diese Lösung nicht komplett fair, was die Lastverteilung angeht. Kommen von manchen Switchen statistisch öfter Nachrichten, so werden diese auch immer demselben Controller zugewiesen. Um dies zu vermeiden, 
