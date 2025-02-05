@@ -3,13 +3,13 @@
 
 \subsection{3 Schichten Architektur}
 
-Um Resilienz in Edge Cloud Systemen zu implementieren sind Resiliente Edge Cloud Systeme nach einer 3-Schichten Architektur aufgebaut. Dieses ist am 2-Schichten-Modell eines Software-Defined-Networking Systems angelehnt, 
-es wird allerdings um eine zusätzliche Schicht ergänzt. Die unterste Ebene ist die Datenebene. Wie auch in klassischen SDN-Systemen befinden sich auf der Datenebene die Netzwerkgeräte, die den Datenverkehr weiterleiten, 
+Um Resilienz in Edge Cloud Systemen zu implementieren sind Resiliente Edge Cloud Systeme nach einer 3-Schichten Architektur aufgebaut. Dieses ist am 2-Schichten-Modell eines \ac{SDN}-Systems angelehnt, 
+es wird allerdings um eine zusätzliche Schicht ergänzt. Die unterste Ebene ist die Datenebene. Wie auch in klassischen \ac{SDN}-Systemen befinden sich auf der Datenebene die Netzwerkgeräte, die den Datenverkehr weiterleiten, 
 beispielsweise Router oder Switche. Die mittlere Schicht ist die Kontrollschicht, oder auch Verbindungslogikschicht. Dort wird die Logik definiert, nach der die Geräte der unteren Ebene die Datenpakete weiterleiten sollen. 
-Dies wird durch die SDN-Controller durchgeführt. Ein klassisches Netzwerk besteht also aus nur einer Schicht, der Datenschicht. Um eine flexible Anpassung des Netzwerkes zu ermöglichen, 
-setzt SDN eine 2-Schichten-Architektur ein, ergänzt also die Kontrollschicht. Um Resilienz in das System zu implementieren ist es logisch, diese 2-Schichten-Architektur wiederum, um eine Schicht zu erweitern. 
-Um Resilienz zu gewährleisten, wird auf der mittleren Schicht nicht nur ein SDN-Controller eingesetzt, sondern eine Menge redundanter Controller. Um diese Menge zu koordinieren, wird ein Cluster Manager eingesetzt. 
-Dieser ist Teil der dritten und damit höchsten Ebene, der Resilienzmanagementebene. Dieser Controller steuert die große Anzahl an SDN-Controllern.
+Dies wird durch die \ac{SDN}-Controller durchgeführt. Ein klassisches Netzwerk besteht also aus nur einer Schicht, der Datenschicht. Um eine flexible Anpassung des Netzwerkes zu ermöglichen, 
+setzt \ac{SDN} eine 2-Schichten-Architektur ein, ergänzt also die Kontrollschicht. Um Resilienz in das System zu implementieren ist es logisch, diese 2-Schichten-Architektur wiederum, um eine Schicht zu erweitern. 
+Um Resilienz zu gewährleisten, wird auf der mittleren Schicht nicht nur ein \ac{SDN}-Controller eingesetzt, sondern eine Menge redundanter Controller. Um diese Menge zu koordinieren, wird ein Cluster Manager eingesetzt. 
+Dieser ist Teil der dritten und damit höchsten Ebene, der Resilienzmanagementebene. Dieser Controller steuert die große Anzahl an \ac{SDN}-Controllern.
 
 
 
@@ -17,13 +17,13 @@ Dieser ist Teil der dritten und damit höchsten Ebene, der Resilienzmanagementeb
 
 
 Im Verlaufe dieser Arbeit wurden bereits einige Probleme der Resilienz von Edge Cloud Systemen erläutert. Diese 4 Hauptprobleme waren vor allem Kommunikationsabbrüche zwischen Controllern und Netzwerkgeräten, 
-Überlastung eines Servers oder einer Verbindung und die Orchestrierung der SDN-Controller. Nun sollen mögliche Lösungen für diese Probleme betrachtet werden, die dazu beitragen können, 
+Überlastung eines Servers oder einer Verbindung und die Orchestrierung der \ac{SDN}-Controller. Nun sollen mögliche Lösungen für diese Probleme betrachtet werden, die dazu beitragen können, 
 Resilienz in Edge Cloud Systemen zu implementieren. 
 
-Ein großes Problem sind Abbrüche der Verbindung zwischen den SDN-Controllern und den Netzwerkgeräten. Neben Maßnahmen zur Vermeidung eines solchen Abbruches müssen vor allem Regeln definiert werden, 
-wie sich die Komponenten im Falle des Abbruchs verhalten sollen. In SDN-Systemen werden Switch häufig mit einer speziellen Software wie OpenvSwitch virtualisiert. 
+Ein großes Problem sind Abbrüche der Verbindung zwischen den \ac{SDN}-Controllern und den Netzwerkgeräten. Neben Maßnahmen zur Vermeidung eines solchen Abbruches müssen vor allem Regeln definiert werden, 
+wie sich die Komponenten im Falle des Abbruchs verhalten sollen. In \ac{SDN}-Systemen werden Switche häufig mit einer speziellen Software wie OpenvSwitch virtualisiert. 
 Eine solche Software stellt für softwarebasierte Switche zwei Funktionsmodi zur Verfügung, also Einstellungen, die definieren, wie sich der Switch verhalten soll. Diese beiden Funktionsmodi sind der secure-Modus, 
-sowie der standalone-Modus. Ist bei einem Switch der secure-Modus ausgewählt, so wird dieser nach einer Verbindungstrennung versuchen, sich wieder mit dem zuständigen SDN-Controller zu verbinden. 
+sowie der standalone-Modus. Ist bei einem Switch der secure-Modus ausgewählt, so wird dieser nach einer Verbindungstrennung versuchen, sich wieder mit dem zuständigen \ac{SDN}-Controller zu verbinden. 
 Alle einkommenden Pakete verwirft er allerdings. Wie die Bezeichnung also vermuten lässt, ist dieser Modus geeignet, um sicherzustellen, dass kein Paket fälschlicherweise an ein falsches Ziel weitergeleitet wird, 
 weil die Flussregeln des Netzwerkgerätes veraltet sind und nicht durch den Controller aktualisiert werden konnten. Bevor dies geschehen kann, reagiert das Netzwerkgerät und stellt seine Tätigkeit ein. 
 Der Standalone-Modus ermöglicht ein eigenständiges Handeln des Netzwerkgerätes. Auch hier registriert ein Switch die Verbindungstrennung und versucht sich wieder mit dem zuständigen Controller zu verbinden. 
@@ -35,7 +35,7 @@ ist allerdings bei jedem Ausfall in seiner Tätigkeit eingeschränkt, weil jene 
 
 
 Eine weitere Herausforderung für die Resilienz in Edge Cloud Systemen ist die Überlastung einzelner Server, die bestimmte Services anbieten. Während manche Server kaum genutzt werden, können andere überlastet sein, 
-da ihre Services gefragt sind und sie daher zahlreiche Anfragen bearbeiten müssen. SDN-Systeme sind dynamischer als klassische Netzwerke und können daher gut geeignet sein, 
+da ihre Services gefragt sind und sie daher zahlreiche Anfragen bearbeiten müssen. \ac{SDN}-Systeme sind dynamischer als klassische Netzwerke und können daher gut geeignet sein, 
 um Mechanismen zur Lastverteilung zu implementieren. Solche Mechanismen helfen bei der Implementierung eines resilienten Edge Cloud Systems. Wichtig ist es zunächst, 
 die Kopplung von Software und Hardware so weit wie möglich aufzuheben. Dazu kann Virtualisierung verwendet werden. Die Server einer Serverfarm eines Edge Cloud Systems werden daher virtualisiert, 
 so können sie je nach Bedarf erzeugt oder verworfen werden. Dies ermöglicht eine flexible Skalierbarkeit und Anpassbarkeit an die momentane Datenlast. Allein Virtualisierung ist allerdings nicht ausreichend, 
@@ -43,17 +43,18 @@ um die Resilienz des Systems gegenüber Datenlast zu steigern. Die einkommende L
 denn eine ungleiche Verteilung führt zu unterschiedlicher Belastung der Server und damit zu nicht notwendigen Wartezeiten. Dieser Verteilung muss innerhalb des Edge-Cloud-Netzwerkes erfolgen, 
 kann aber nicht von den Servern selbst durchgeführt werden. Der Client hat keine Kenntnis von der internen Struktur des Edge Cloud Netzwerkes, kann also seine Daten nicht direkt auf die verschiedenen Server adressieren. 
 Für diesen muss also eine Möglichkeit bestehen, seine Anfrage an eine zentrale Stelle zu senden, an der diese dann verteilt wird. Auch eine Verteilung bei den Servern ist nicht praktikabel, 
-da es sich um virtuelle Server handelt, die nach Belieben aktiviert und deaktiviert werden. Die Verteilung muss daher bei den SDN-Controllern stattfinden, die somit zwischen dem Client, 
-also der Quelle der Anfrage und dem Server, also dem Ziel der Anfrage stehen. Die SDN-Controller verteilen die Daten gleichmäßig auf die Server. Dieses Konzept wird mithilfe des Adress Resolution Protocol bitte klammern ergänzen ARP realisiert. 
-Das Protokoll dient der Umwandlung von logischen IP-Adressen in physische MAC-Adressen. Dazu wird in einem ARP-Request vom Client aus, eine Anfrage an alle Netzwerkegeräte innerhalb eines Netzwerkes geschickt, 
-die die gesuchte IP-Adresse enthält. In einem ARP-Reply schickt das Gerät mit der gesuchten IP-Adresse seine MAC-Adresse zurück an den Client. Nun können beide Geräte über die MAC-Adresse kommunizieren. 
-Dieses Protokoll kann man nutzen, um den SDN-Controller als Man-in-the Middle zu etablieren, also einen Zwischenmann, der zwischen Client und Server steht. In der Praxis könnte dies beispielsweise aussehen, 
-dass ein Client, der einen Service der Edge Cloud in Anspruch nehmen möchte, einen ARP-Request absetzt, um herauszufinden, wohin er seine Datenpakete schicken soll. 
-Dieser ARP-Request wird von einem der SDN-Controller verarbeitet. Dieser ermittelt die Auslastung der virtualisierten Server und entscheidet darauf basierend, welcher Server die Anfrage des Clients bearbeiten soll. 
-Dieser virtuelle Server wird automatisch aktiviert. Dem Client schickt der SDN-Controller allerdings nicht die direkte IP-Adresse des virtuellen Servers. Stattdessen schickt er eine virtuelle IP-Adresse, 
-die alle Server der Serverfarm repräsentiert. Damit entsteht für den Client der Eindruck, er würde die gesamte Zeit über mit demselben Server kommunizieren, in der Realität kommuniziert er allerdings mit dem SDN-Controller, 
-seine Anfragen werden nicht immer vom selben Server bearbeitet, sondern immer von dem, der die höchste Kapazität hat. Für den Client bietet dies den Vorteil, dass er seine Anfrage immer nur an diese IP-Adresse schicken muss, 
-der Lastverteilungsmechanismus wird für den Client unsichtbar ausgeführt. Mithilfe dieses Mechanismus lassen sich Edge Cloud Systeme resilienter gestalten, da Schwankungen in der Datenlast häufig zu Überlastung und Wartezeiten führen, was dem Ziel einer möglichst geringen Latenz entgegenläuft. Ein funktionierender Lastverteilungsmechanismus sollte also Teil eine resilienten Edge Cloud Systems sein.
+da es sich um virtuelle Server handelt, die nach Belieben aktiviert und deaktiviert werden. Die Verteilung muss daher bei den \ac{SDN}-Controllern stattfinden, die somit zwischen dem Client, 
+also der Quelle der Anfrage und dem Server, also dem Ziel der Anfrage stehen. Die \ac{SDN}-Controller verteilen die Daten gleichmäßig auf die Server. Dieses Konzept wird mithilfe des \ac{ARP} realisiert. 
+Das Protokoll dient der Umwandlung von logischen \ac{IP}-Adressen in physische \ac{MAC}-Adressen. Dazu wird in einem \ac{ARP}-Request vom Client aus, eine Anfrage an alle Netzwerkegeräte innerhalb eines Netzwerkes geschickt, 
+die die gesuchte \ac{IP}-Adresse enthält. In einem \ac{ARP}-Reply schickt das Gerät mit der gesuchten \ac{IP}-Adresse seine \ac{MAC}-Adresse zurück an den Client. Nun können beide Geräte über die \ac{MAC}-Adresse kommunizieren. 
+Dieses Protokoll kann man nutzen, um den \ac{SDN}-Controller als Man-in-the Middle zu etablieren, also einen Zwischenmann, der zwischen Client und Server steht. In der Praxis könnte dies beispielsweise aussehen, 
+dass ein Client, der einen Service der Edge Cloud in Anspruch nehmen möchte, einen \ac{ARP}-Request absetzt, um herauszufinden, wohin er seine Datenpakete schicken soll. 
+Dieser \ac{ARP}-Request wird von einem der \ac{SDN}-Controller verarbeitet. Dieser ermittelt die Auslastung der virtualisierten Server und entscheidet darauf basierend, welcher Server die Anfrage des Clients bearbeiten soll. 
+Dieser virtuelle Server wird automatisch aktiviert. Dem Client schickt der \ac{SDN}-Controller allerdings nicht die direkte \ac{IP}-Adresse des virtuellen Servers. Stattdessen schickt er eine virtuelle \ac{IP}-Adresse, 
+die alle Server der Serverfarm repräsentiert. Damit entsteht für den Client der Eindruck, er würde die gesamte Zeit über mit demselben Server kommunizieren, in der Realität kommuniziert er allerdings mit dem \ac{SDN}-Controller, 
+seine Anfragen werden nicht immer vom selben Server bearbeitet, sondern immer von dem, der die höchste Kapazität hat. Für den Client bietet dies den Vorteil, dass er seine Anfrage immer nur an diese \ac{IP}-Adresse schicken muss, 
+der Lastverteilungsmechanismus wird für den Client unsichtbar ausgeführt. Mithilfe dieses Mechanismus lassen sich Edge Cloud Systeme resilienter gestalten, da Schwankungen in der Datenlast häufig zu Überlastung und Wartezeiten führen, 
+was dem Ziel einer möglichst geringen Latenz entgegenläuft. Ein funktionierender Lastverteilungsmechanismus sollte also Teil eine resilienten Edge Cloud Systems sein.
 
 Neben Servern können auch Verbindungen überlastet werden. Das Resultat ist das allerdings das gleiche, es kommt zu langen Wartezeiten und Stau. Im Prinzip folgt die Lösung für dieses Problem dem der Serverüberlastung. 
 Statt hier den Datenverkehr zwischen mehreren Servern aufzuteilen, teilt man hier die Daten auf verschiedene Verbindungen auf, um der Überlastung einzelner Verbindungen entgegenzuwirken. 
@@ -68,27 +69,27 @@ Die Gewichte der Buckets werden durch einen Routing-Algorithmus bestimmt, der di
 So bekommen Verbindungen mit hoher Auslastung weniger Pakete zugeteilt als Verbindungen mit niedrigerer Auslastung. Dieser Mechanismus allein sorgt allerdings nur für eine Umverteilung der Pakete. 
 Es wird schnell dazu kommen, dass die Alternativverbindungen durch die hohe Zahl der ihnen zugewiesenen Pakete auch überlastet werden, während sich die zuvor überlasteten Verbindungen erholen. 
 Um den Datenfluss dauerhaft gleichmäßig zu verteilen, müssen die Pfadkosten kontinuierlich aktualisiert werden. Ziel ist es, dass die Pfadkosten so realistisch wie möglich die realen Bedingungen des Netzwerkes beschreiben. 
-Dazu müssen die SDN-Controller regelmäßig Statistiken zur Performance des Netzwerkes von den Switchen abrufen. Ist eine vorher überlastete Verbindung nun weniger ausgelastet, so sinken die Pfadkosten dieser Verbindungen, 
+Dazu müssen die \ac{SDN}-Controller regelmäßig Statistiken zur Performance des Netzwerkes von den Switchen abrufen. Ist eine vorher überlastete Verbindung nun weniger ausgelastet, so sinken die Pfadkosten dieser Verbindungen, 
 was dann wiederum zu einem höheren Bucket-Gewicht und damit einer wieder steigenden Anzahl an Paketen führt. Im Umkehrschluss führt eine Erhöhung der Auslastung zu höheren Pfadkosten, damit einem niedrigeren Bucket-Gewicht 
 und weniger Paketen. Dieser Mechanismus verteilt automatisch den Datenverkehr innerhalb des Netzwerkes und verringert somit das Risiko von überlasteten Verbindungen. Dies bringt außerdem einen weiteren positiven Effekt. 
 Innerhalb einer Verbindung konkurrieren verschiedene Datenströme um die Verbindung. In überlasteten Verbindungen kann es daher dazu kommen, dass bestimmte Datenströme einen unfairen Vorteil bekommen. 
-UDP-Pakete nutzen beispielsweise die gesamte Bandbreite, die sie benötigen, ohne dabei Rücksicht auf andere Datenströme zu nehmen. TCP-Datenpakete könnten daher in überlasteten Verbindungen von UDP verdrängt werden, 
+\ac{UDP}-Pakete nutzen beispielsweise die gesamte Bandbreite, die sie benötigen, ohne dabei Rücksicht auf andere Datenströme zu nehmen. \ac{TCP}-Datenpakete könnten daher in überlasteten Verbindungen von \ac{UDP} verdrängt werden, 
 obwohl sie eigentlich eine höhere Priorität haben könnten. Der Lastverteilungsmechanismus hilft dabei, überlastete Verbindungen zu verhindern und damit auch den unfairen Wettbewerb der Datenströme einzudämmen.
 
-Um die Resilienz zu verbessern, wird das SDN-System nicht nur mit einem SDN-Controller, sondern mit mehreren redundanten Controllern betrieben. Dies bringt eine bessere Skalierbarkeit und Ausfallsicherheit, 
-allerdings auch eine Herausforderung mit sich. Die Menge an redundanten SDN-Controllern muss orchestriert und organisiert werden, damit sich die einzelnen Controller nicht gegenseitig behindern. 
+Um die Resilienz zu verbessern, wird das \ac{SDN}-System nicht nur mit einem \ac{SDN}-Controller, sondern mit mehreren redundanten Controllern betrieben. Dies bringt eine bessere Skalierbarkeit und Ausfallsicherheit, 
+allerdings auch eine Herausforderung mit sich. Die Menge an redundanten \ac{SDN}-Controllern muss orchestriert und organisiert werden, damit sich die einzelnen Controller nicht gegenseitig behindern. 
 Befugnisse und Eingriffsbereiche eines jeden Controllers müssen also zu jedem Zeitpunkt klar definiert sein. Um diese Orchestrierung zu gewährleisten, müssen die Controller verschiedene Rollen annehmen, 
-die ihre Einsatzbereiche festlegen. Ein Controller mit der Master-Roller kontrolliert und steuert die ihm zugewiesenen Switche. Er kann außerdem wichtige Protokollnachrichten empfangen, beispielsweise Packet In. 
+die ihre Einsatzbereiche festlegen. Ein Controller mit der Master-Rolle kontrolliert und steuert die ihm zugewiesenen Switche. Er kann außerdem wichtige Protokollnachrichten empfangen, beispielsweise Packet In. 
 In einem Cluster kann immer nur ein Controller zum Master werden. Ein Controller, dem die Rolle Slave zugewiesen wurde, überwacht zwar auch das System, erhält allerdings nicht die Protokollnachrichten wie Packet In. 
 So fungiert immer nur ein Controller des Netzwerkes als Hauptcontroller. Die Zuweisung der Rollen der Controller erfolgt durch einen Cluster Manager und nach einem festgelegten Verfahren. 
-Jeder SDN-Controller des Netzwerkes schickt eine zufällig gewählte Ganzzahl an den Clustermanager. Dieser vergleicht die erhaltenen Nummern nun miteinander. 
-Dem Controller mit der niedrigsten Zahl weißt er den ersten Platz in der Reihenfolge, also Platz 0 zu, dem mit der zweitniedrigsten Zahl den zweiten Platz. Dies wird für jeden SDN-Controller durchgeführt, 
-bis jeder SDN-Controller eine eindeutige Nummerierung besitzt. Außerdem wird die Gesamtzahl der Controller im Netzwerk abgespeichert. Der Controller mit der höchsten Nummerierung wird zum Master. 
-Alternativ können die verschiedenen SDN-Controller die Arbeitslast auch so aufteilen, dass kein zentraler Master notwendig ist, um Nachrichten zu verarbeiten. In diesem Konzept hat jeder Controller die Rolle Equal. 
+Jeder \ac{SDN}-Controller des Netzwerkes schickt eine zufällig gewählte Ganzzahl an den Clustermanager. Dieser vergleicht die erhaltenen Nummern nun miteinander. 
+Dem Controller mit der niedrigsten Zahl weißt er den ersten Platz in der Reihenfolge, also Platz 0 zu, dem mit der zweitniedrigsten Zahl den zweiten Platz. Dies wird für jeden \ac{SDN}-Controller durchgeführt, 
+bis jeder \ac{SDN}-Controller eine eindeutige Nummerierung besitzt. Außerdem wird die Gesamtzahl der Controller im Netzwerk abgespeichert. Der Controller mit der höchsten Nummerierung wird zum Master. 
+Alternativ können die verschiedenen \ac{SDN}-Controller die Arbeitslast auch so aufteilen, dass kein zentraler Master notwendig ist, um Nachrichten zu verarbeiten. In diesem Konzept hat jeder Controller die Rolle Equal. 
 So ist allerdings ein verteilter Entscheidungsalgorithmus notwendig, der bestimmt, welcher Controller eine eingehende Nachricht verarbeiten soll. In diesem Algorithmus prüft jeder Controller, ob folgende Bedingung zutrifft: 
 dpid modbitte klammern ergänzen todonumbitte unterstrich ergänzenserver == order. Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
-Numbitte unterstrich ergänzen todoserver ist die Gesamtanzahl aller SDN-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
-Die Modulo Operation teilt also die Menge der Switch auf die Gesamtzahl der Server auf. Ein Controller ist damit immer für die Nachrichten zuständig, die von einem Switch einer bestimmten Gruppe kommen. 
+Numbitte unterstrich ergänzen todoserver ist die Gesamtanzahl aller \ac{SDN}-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
+Die Modulo Operation teilt also die Menge der Switche auf die Gesamtzahl der \ac{SDN}-Controller auf. Ein Controller ist damit immer für die Nachrichten zuständig, die von einem Switch einer bestimmten Gruppe kommen. 
 Jeder Controller vergleicht das Ergebnis der Operation mit seiner Nummerierung. Diese Bedingung wird also immer nur bei einem Controller gleichzeitig wahr. Dieser Controller verarbeitet dann die Nachricht. 
 Trotzdem ist auch diese Lösung nicht komplett fair, was die Lastverteilung angeht. Kommen von manchen Switchen statistisch öfter Nachrichten, so werden diese auch immer demselben Controller zugewiesen. Um dies zu vermeiden, 
 kann man statt nach Switches nach den Nachrichten an sich aufteilen. Dazu muss die Dpid in der Bedingung durch eine eindeutige Nummerierung der ankommenden Nachricht ersetzt werden. 

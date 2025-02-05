@@ -10,7 +10,7 @@
 
 \subsubsection{Edge Cloud Systeme}
 todo
-In den letzten Jahren haben Cloud-Systeme immer mehr an Popularität gewonnen. Firmen, die ihre IT-Systeme on-premise betrieben haben, also auf angemieteten Servern, haben teilweise ihre Aktivität in die Cloud verlegt. 
+In den letzten Jahren haben Cloud-Systeme immer mehr an Popularität gewonnen. Firmen, die ihre \ac{IT}-Systeme on-premise betrieben haben, also auf angemieteten Servern, haben teilweise ihre Aktivität in die Cloud verlegt. 
 Die Cloud ist ein entferntes großes Rechenzentrum, das üblicherweise von einem großen Cloud-Betreiber betrieben wird. Die größten Cloudbetreiber im Jahr 2024 todo bitte Quelle finden, waren Amazon Web Services, 
 Microsoft Azure und Google. Die Cloud bietet Unternehmen einige Vorteile, beispielsweise lässt sie sich einfach konfigurieren und den Bedürfnissen des Unternehmens anpassen. 
 Die benötigte Rechenkapazität lässt sich außerdem einfach skalieren. Allerdings bringt die Cloud auch Nachteile mit sich. Das Rechenzentrum der Cloud ist meistens räumlich weit entfernt vom Unternehmen, das Cloud-Dienste in Anspruch nimmt. 
@@ -34,50 +34,49 @@ Dezentral definiert bedeutet, dass jedes Netzwerkgerät seine Flussregeln lokal 
 zum anderen müssen die Auswirkungen, die das Ändern der Regel mit sich bringt, betrachtet werden. \ac{SDN}-Systeme verfolgen einen anderen Ansatz, diese trennen die Datenebene von der Kontrollebene. 
 Die Datenebene bezeichnet die Komponente eines Netzwerkes, die die eigentliche Aufgabe des Netzwerkes verrichten. Teil der Datenebene sind Netzwerkgeräte, die Datenpakete nach bestimmten Regeln weiterleiten. 
 Das können Router, Switche oder auch andere Komponenten des Netzwerkes sein. Die Kontrollebene auf der anderen Seite hat die Aufgabe, das Netzwerk kontinuierlich zu überwachen. 
-Auf ihr befinden sich die sogenannten SDN-Controller, das sind Softwareprogramme, die die Aufgabe haben, Änderungen im Netzwerk zu erkennen und dieses dynamisch umzukonfigurieren, um dieser Änderung gerecht zu werden. 
-Ein SDN-Controller könnte beispielsweise eine erhöhte Anzahl an Client-Anfragen registrieren und zusätzliche virtuelle Server hochfahren, um diese Anfragen zu bearbeiten. 
-Die statische Netzwerktopologie der klassischen Netzwerke wird so durch ein sich dynamisch anpassendes Netzwerk ersetzt. (1.Quelle)todo Um die Potenziale von Software-Defined Networking in Gänze zu nutzen, 
+Auf ihr befinden sich die sogenannten \ac{SDN}-Controller, das sind Softwareprogramme, die die Aufgabe haben, Änderungen im Netzwerk zu erkennen und dieses dynamisch umzukonfigurieren, um dieser Änderung gerecht zu werden. 
+Ein \ac{SDN}-Controller könnte beispielsweise eine erhöhte Anzahl an Client-Anfragen registrieren und zusätzliche virtuelle Server hochfahren, um diese Anfragen zu bearbeiten. 
+Die statische Netzwerktopologie der klassischen Netzwerke wird so durch ein sich dynamisch anpassendes Netzwerk ersetzt. (1.Quelle)todo Um die Potenziale von \ac{SDN} in Gänze zu nutzen, 
 wird es häufig mit Virtualisierung kombiniert. Virtualisierung ermöglicht Skalierbarkeit des Netzwerkes, da es so möglich ist, eine gewünschte Anzahl an Netzwerkgeräten virtuell zur Verfügung zu stellen. 
 Werden diese virtuellen Instanzen nicht mehr benötigt, so kann man sie flexibel deaktivieren. Zur Virtualisierung von Netzwerkgeräten wie Switchen werden häufig Softwareprogramme wie beispielsweise OpenvSwitch eingesetzt (Ende 1. Quelle)todo. 
-Um die dezentralen Flussregeln der Netzwerkgeräte durch ein zentrales Programm wie den SDN-Controller zu steuern, benutzen die Geräte ein Protokoll wie OpenFlow, 
-das eine Kommunikation zwischen Netzwerkgeräten und SDN-Controllern und damit die dynamische Umkonfiguration des Netzes ermöglicht. SDN-Controller können so als Betriebssystem des Netzwerkes fungieren. 
+Um die dezentralen Flussregeln der Netzwerkgeräte durch ein zentrales Programm wie den \ac{SDN}-Controller zu steuern, benutzen die Geräte ein Protokoll wie OpenFlow, 
+das eine Kommunikation zwischen Netzwerkgeräten und \ac{SDN}-Controllern und damit die dynamische Umkonfiguration des Netzes ermöglicht. \ac{SDN}-Controller können so als Betriebssystem des Netzwerkes fungieren. 
 Ähnlich wie ein Betriebssystem die Hoheit über Speicher und Prozessor besitzt und festlegt, welche Programme die Hardware nutzen dürfen, so besitzt der Controller die Hoheit über das Netzwerk und legt fest, 
-wie Datenflüsse innerhalb des Netzwerkes weitergeleitet werden. Software-Defined Network-Systeme bieten einige Vorteile gegenüber klassischen Netzwerken. Dazu zählt neben der bereits erwähnten Skalierbarkeit auch, 
+wie Datenflüsse innerhalb des Netzwerkes weitergeleitet werden. \ac{SDN}-Systeme bieten einige Vorteile gegenüber klassischen Netzwerken. Dazu zählt neben der bereits erwähnten Skalierbarkeit auch, 
 dass sie in der Lage sind, Strategien zur Lastverteilung umzusetzen. Zum einen können sie sich bei einer insgesamt erhöhten Datenlast anpassen, zum anderen reagieren sie flexibel, 
 wenn einzelne Teile innerhalb des Netzwerkes überlastet sind und verteilen die Datenströme gleichmäßig innerhalb des Netzwerkes. Dies wird durch eine allgemein bessere Übersicht über das Netzwerk ermöglicht. 
-Software-Defined Networking ermöglicht es also Netzwerke so flexibel anzubieten, wie Virtualisierung dies mit Instanzen von Betriebssystemen ermöglicht.
+\ac{SDN} ermöglicht es also Netzwerke so flexibel anzubieten, wie Virtualisierung dies mit Instanzen von Betriebssystemen ermöglicht.
 
 
 
 
 
 Die müssen hier solange stehen bis sie verwendet werden damit man das Abkürzungsverzeichnis testen kann
-\ac{DDOS}: Distributed Denial of Service
+
 
 \ac{IP}: Internet Protocol
-\ac{IT}: Informationstechnologie
 
-\ac{TCP}: Transmission Control Protocol
-\ac{UDP}: User Datagram Protocol
+
+
 
 
 \subsection{Probleme der Resilienz in Edge Cloud Systemen}
 
 todo
 
-Die Resilienz von IT-Systemen ist ein immer wichtiger werdendes Thema. Das zeigen unter anderem auch Gesetze wie der \ac{DORA}, der von der Europäischen Union erlassen wurde, 
-um Resilienz in Unternehmen zu verbessern. Im Grund bedeutet Resilienz die Widerstandsfähigkeit von IT-Systemen gegen anormale Zustände (todo bitte Quelle finden). 
+Die Resilienz von \ac{IT}-Systemen ist ein immer wichtiger werdendes Thema. Das zeigen unter anderem auch Gesetze wie der \ac{DORA}, der von der Europäischen Union erlassen wurde, 
+um Resilienz in Unternehmen zu verbessern. Im Grund bedeutet Resilienz die Widerstandsfähigkeit von \ac{IT}-Systemen gegen anormale Zustände (todo bitte Quelle finden). 
 Diese Resilienz soll auch in Edge Cloud Systemen umgesetzt werden, denn da die Wichtigkeit von Edge Cloud Systemen immer weiterwächst, steigt auch der Bedarf an resilienten Lösungen. 
 
 Edge Cloud Systeme sind komplexe Systeme, was dazu führt, dass es viele Probleme für die Umsetzung einer resilienten Lösung gibt. Davon sollen allerdings 4 betrachtet werden.
-Zum einen besteht das Problem von Kommunikationsabbrüchen zwischen Switchen und ihren SDN-Controllern. Wie bereits beschrieben, steuert ein SDN-Controller die ihm zugewiesenen Netzwerkgeräte, 
+Zum einen besteht das Problem von Kommunikationsabbrüchen zwischen Switchen und ihren \ac{SDN}-Controllern. Wie bereits beschrieben, steuert ein \ac{SDN}-Controller die ihm zugewiesenen Netzwerkgeräte, 
 überwacht diese und aktualisiert ihre Flussregeln. Dazu müssen Sie eine Netzwerkverbindung aufbauen. Führt ein nicht erwartetes Ereignis zu dem Ausfall der Netzwerkverbindung, 
 so muss eine resiliente Lösung den Betrieb auch weiterhin zumindest für eine bestimmte Zeit lange weiterführen. Eine Lösung, in der keine Resilienz-steigernden Maßnahmen eingebaut wurden, 
-könnte bei Abbruch der Verbindung den Betrieb nicht mehr fortsetzen. Da die SDN-Controller keine Kontrolle mehr über die Netzwerkgeräte besitzen, kann das Netzwerk nicht mehr dynamisch umkonfiguriert werden.
+könnte bei Abbruch der Verbindung den Betrieb nicht mehr fortsetzen. Da die \ac{SDN}-Controller keine Kontrolle mehr über die Netzwerkgeräte besitzen, kann das Netzwerk nicht mehr dynamisch umkonfiguriert werden.
 
 Ein weiteres Problem ist die Überlastung eines Servers durch zu viele Client-Anfragen. Besonders bei schwankenden Nutzungsraten, muss eine resiliente Lösung fähig sein, mit Überlastung umzugehen. 
 Wird beispielsweise eine erhöhte Anzahl an Anfragen auf einen bestimmten Service registriert, so muss die Last automatisch auf verschiedene Server aufgeteilt werden, die den gleichen Service anbieten. 
-Dies erhöht die Resilienz gegenüber einer großen Menge an Anfragen, die durch DDOS-Angriffe, aber auch durch legitime Nutzung zustande kommen können. 
+Dies erhöht die Resilienz gegenüber einer großen Menge an Anfragen, die durch \ac{DDOS}-Angriffe, aber auch durch legitime Nutzung zustande kommen können. 
 Eine Lösung ohne solche Maßnahmen würde alle Anfragen an einen einzelnen Server weiterleiten, der aufgrund der Anfragen überlastet wäre. Dies resultiert in einer hohen Wartezeit. 
 Diese hohe Wartezeit allerdings wäre ein Widerspruch gegen die Ziele von Edge Cloud Systemen, die eigentlich die Reduzierung von Latenz beinhalten. 
 Eine höhere Wartezeit durch Überlastung eines Servers ist daher nicht tolerierbar.
@@ -86,13 +85,13 @@ Zusätzlich zu Servern können auch einzelne Netzwerkverbindungen überlastet we
 Wird in einer nicht-resilienten Lösung ein Algorithmus verwendet, der alle Datenpakete zum selben Ziel auch denselben Weg durch das Netzwerk schickt, so führt dies bei einer hohen Anfragendichte dazu, 
 dass eine bestimmte Verbindung schnell überlastet ist. Zur gleichen Zeit sind allerdings Alternativrouten kaum genutzt und wären zwar in der Theorie länger, 
 in der Praxis durch den Stau auf der Hauptleitung allerdings schneller. Ein resilientes Design muss dies berücksichtigen und den Datenverkehr bei Auslastung einer Verbindung im Netzwerk verteilen. 
-Dazu kann das System durch seinen SDN-basierten Aufbau dynamisch die Flussregeln der Netzwerkgeräte anpassen. Zu der Überlastung einzelner Leitung kommt noch, dass innerhalb einer Leitung TCP und UDP-Datenpakete konkurrieren. 
-UDP-Datenverkehr tendiert dazu, einen Großteil einer Verbindung in Anspruch zu nehmen. Bei normaler Auslastung stellt dies noch kein Problem dar, ist die Leitung allerdings überlastet, so wird TCP-Datenverkehr benachteiligt. 
-Das resiliente System muss also durch die Verteilung des Datenverkehrs im Netzwerk dafür sorgen, dass TCP-Datenverkehr nicht benachteiligt wird.
+Dazu kann das System durch seinen \ac{SDN}-basierten Aufbau dynamisch die Flussregeln der Netzwerkgeräte anpassen. Zu der Überlastung einzelner Leitung kommt noch, dass innerhalb einer Leitung \ac{TCP} und \ac{UDP}-Datenpakete konkurrieren. 
+\ac{UDP}-Datenverkehr tendiert dazu, einen Großteil einer Verbindung in Anspruch zu nehmen. Bei normaler Auslastung stellt dies noch kein Problem dar, ist die Leitung allerdings überlastet, so wird \ac{TCP}-Datenverkehr benachteiligt. 
+Das resiliente System muss also durch die Verteilung des Datenverkehrs im Netzwerk dafür sorgen, dass \ac{TCP}-Datenverkehr nicht benachteiligt wird.
 
-Ein weiteres Problem ist die Orchestrierung der SDN-Controller. Eine redundante Menge an SDN-Controllern bietet an sich zwar schon Resilienz, bringt allerdings auch Probleme mit sich. 
-Diese redundanten SDN-Controller müssen nämlich auch koordiniert werden. Ziel dabei ist es, dass jedes Netzwerkgerät einen Controller besitzt, der diesen kontrolliert, 
-auf der anderen Seite dürfen allerdings nicht gleichzeitig mehrere Controller für ein Netzwerkgerät zuständig sein. Ein Netzwerkgerät ohne Controller wäre kein funktionierendes Teil im SDN-Netzwerk, 
+Ein weiteres Problem ist die Orchestrierung der \ac{SDN}-Controller. Eine redundante Menge an \ac{SDN}-Controllern bietet an sich zwar schon Resilienz, bringt allerdings auch Probleme mit sich. 
+Diese redundanten \ac{SDN}-Controller müssen nämlich auch koordiniert werden. Ziel dabei ist es, dass jedes Netzwerkgerät einen Controller besitzt, der diesen kontrolliert, 
+auf der anderen Seite dürfen allerdings nicht gleichzeitig mehrere Controller für ein Netzwerkgerät zuständig sein. Ein Netzwerkgerät ohne Controller wäre kein funktionierendes Teil im \ac{SDN}-Netzwerk, 
 denn es gäbe keine Möglichkeiten, die Flussregeln dieses Netzwerkgeräts zu ändern. Verarbeiten allerdings mehrere Controller die Nachrichten eines Netzwerkgeräts, so führt dies auch zu Problemen, 
 da diese das Gerät mit widersprüchlichen Befehlen versorgen könnten.
 
