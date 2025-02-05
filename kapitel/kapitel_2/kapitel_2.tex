@@ -44,7 +44,7 @@ denn eine ungleiche Verteilung führt zu unterschiedlicher Belastung der Server 
 kann aber nicht von den Servern selbst durchgeführt werden. Der Client hat keine Kenntnis von der internen Struktur des Edge Cloud Netzwerkes, kann also seine Daten nicht direkt auf die verschiedenen Server adressieren. 
 Für diesen muss also eine Möglichkeit bestehen, seine Anfrage an eine zentrale Stelle zu senden, an der diese dann verteilt wird. Auch eine Verteilung bei den Servern ist nicht praktikabel, 
 da es sich um virtuelle Server handelt, die nach Belieben aktiviert und deaktiviert werden. Die Verteilung muss daher bei den SDN-Controllern stattfinden, die somit zwischen dem Client, 
-also der Quelle der Anfrage und dem Server, also dem Ziel der Anfrage stehen. Die SDN-Controller verteilen die Daten gleichmäßig auf die Server. Dieses Konzept wird mithilfe des Adress Resolution Protocol (ARP) realisiert. 
+also der Quelle der Anfrage und dem Server, also dem Ziel der Anfrage stehen. Die SDN-Controller verteilen die Daten gleichmäßig auf die Server. Dieses Konzept wird mithilfe des Adress Resolution Protocol bitte klammern ergänzen ARP realisiert. 
 Das Protokoll dient der Umwandlung von logischen IP-Adressen in physische MAC-Adressen. Dazu wird in einem ARP-Request vom Client aus, eine Anfrage an alle Netzwerkegeräte innerhalb eines Netzwerkes geschickt, 
 die die gesuchte IP-Adresse enthält. In einem ARP-Reply schickt das Gerät mit der gesuchten IP-Adresse seine MAC-Adresse zurück an den Client. Nun können beide Geräte über die MAC-Adresse kommunizieren. 
 Dieses Protokoll kann man nutzen, um den SDN-Controller als Man-in-the Middle zu etablieren, also einen Zwischenmann, der zwischen Client und Server steht. In der Praxis könnte dies beispielsweise aussehen, 
@@ -86,8 +86,8 @@ Dem Controller mit der niedrigsten Zahl weißt er den ersten Platz in der Reihen
 bis jeder SDN-Controller eine eindeutige Nummerierung besitzt. Außerdem wird die Gesamtzahl der Controller im Netzwerk abgespeichert. Der Controller mit der höchsten Nummerierung wird zum Master. 
 Alternativ können die verschiedenen SDN-Controller die Arbeitslast auch so aufteilen, dass kein zentraler Master notwendig ist, um Nachrichten zu verarbeiten. In diesem Konzept hat jeder Controller die Rolle Equal. 
 So ist allerdings ein verteilter Entscheidungsalgorithmus notwendig, der bestimmt, welcher Controller eine eingehende Nachricht verarbeiten soll. In diesem Algorithmus prüft jeder Controller, ob folgende Bedingung zutrifft: 
-dpid mod(numbitte unterstrich ergänzenserver) == order. Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
-Num_server ist die Gesamtanzahl aller SDN-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
+dpid modbitte klammern ergänzen todonumbitte unterstrich ergänzenserver == order. Dpid, also Datapath-Identifier ist die eindeutige Zuordnung eines Switches. Es bezeichnet also, von welchem Switch die einkommende Nachricht gesendet wurde. 
+Numbitte unterstrich ergänzen todoserver ist die Gesamtanzahl aller SDN-Controller im System. Order ist die Nummerierung des Controllers, auf dem der Algorithmus jeweils ausgeführt wird. 
 Die Modulo Operation teilt also die Menge der Switch auf die Gesamtzahl der Server auf. Ein Controller ist damit immer für die Nachrichten zuständig, die von einem Switch einer bestimmten Gruppe kommen. 
 Jeder Controller vergleicht das Ergebnis der Operation mit seiner Nummerierung. Diese Bedingung wird also immer nur bei einem Controller gleichzeitig wahr. Dieser Controller verarbeitet dann die Nachricht. 
 Trotzdem ist auch diese Lösung nicht komplett fair, was die Lastverteilung angeht. Kommen von manchen Switchen statistisch öfter Nachrichten, so werden diese auch immer demselben Controller zugewiesen. Um dies zu vermeiden, 
